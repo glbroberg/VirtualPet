@@ -10,12 +10,27 @@ namespace VirtualPet_Template
     {
         static void Main(string[] args)
         {
+
+            VirtualPet myPet = new VirtualPet();
             Console.Write("Hello!  Welcome to VirtuaPet! \n\n Would you like to name your pet?(y/n): ");
             string nameQuest = Console.ReadLine().ToLower();
 
+            if (nameQuest == "y" || nameQuest=="yes")
+            {
+                myPet.petName();
+            }
+            else if(nameQuest=="n" || nameQuest == "no")
+            {
+                
+            }
+            else
+            {
+                Console.WriteLine("Invalid answwer, would you like to name your pet (y/n)?: ");
+                nameQuest = Console.ReadLine().ToLower();
 
-            Console.WriteLine();
-            VirtualPet myPet = new VirtualPet();
+            }
+
+           
 
 
             //TODO add a greeting for the user. you can also let the user name the pet if you like
@@ -75,8 +90,7 @@ namespace VirtualPet_Template
 
                     case 6:
 
-                        myPet.HungerDecrease();
-                        Console.WriteLine("Thank you for feeding the pet");
+                        myPet.petName();
                         break;
 
                     case 10:

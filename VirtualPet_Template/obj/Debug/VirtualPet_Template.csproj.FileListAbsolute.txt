@@ -7,3 +7,6 @@ c:\users\jarry\documents\visual studio 2015\Projects\VirtualPet_Template\Virtual
 C:\Users\Garrett\Documents\Visual Studio 2015\Projects\VirtualPet_Template-master\VirtualPet_Template\bin\Debug\VirtualPet_Template.exe.config
 C:\Users\Garrett\Documents\Visual Studio 2015\Projects\VirtualPet_Template-master\VirtualPet_Template\obj\Debug\VirtualPet_Template.exe
 C:\Users\Garrett\Documents\Visual Studio 2015\Projects\VirtualPet_Template-master\VirtualPet_Template\obj\Debug\VirtualPet_Template.pdb
+C:\Users\Garrett\Documents\Visual Studio 2015\Projects\VirtualPet_Template-master\VirtualPet_Template\bin\Debug\VirtualPet_Template.exe
+C:\Users\Garrett\Documents\Visual Studio 2015\Projects\VirtualPet_Template-master\VirtualPet_Template\bin\Debug\VirtualPet_Template.pdb
+C:\Users\Garrett\Documents\Visual Studio 2015\Projects\VirtualPet_Template-master\VirtualPet_Template\obj\Debug\VirtualPet_Template.csprojResolveAssemblyReference.cache

@@ -28,6 +28,14 @@ namespace VirtualPet_Template
             //TODO account for more fields
         }
 
+        // Assigns Pet Name
+        public void petName()
+        {
+
+            Console.WriteLine("Please type your pet's name: ");
+            name = Console.ReadLine();
+        }
+
         //TODO how can we set things with our construtor
         public VirtualPet(string name)
         {
