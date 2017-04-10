@@ -17,56 +17,77 @@ namespace VirtualPet_Template
         private int hitPoints;
         private int activity;
         private int mana;
-
+        private int bigMacCount = 0;
+         
         // Default Constructor
         public VirtualPet()
         {
             this.name = "Nameless Loser";
-            this.stomach = 90;
-            this.hydration = 20;
-            this.behavior = 20;
-            this.hitPoints = 20;
-            this.activity = 20;
+            this.stomach = 20;
+            this.hydration = 50;
+            this.behavior = 50;
+            this.hitPoints = 50;
+            this.activity = 50;
             this.mana = 20;
         }
-
-
-        //// Name Choice Constructor
-        //public VirtualPet(string name)
-        //{
-        //    this.name = name;
-        //    this.stomach = 90;
-        //    this.hydration = 50;
-        //    this.behavior = 50;
-        //    this.hitPoints = 50;
-        //    this.activity = 50;  
-        //}
 
 
         // Assigns Pet Name
         public void PetName()
         {
-
             Console.Write("Please type your pet's name: ");
             name = Console.ReadLine();
-            
         }
 
 
         //************* Attribute Modifying Methods **********************************  
 
-        string stomachHi = "No thanks, I'm already full!";
-        string stomachLo = "Your pet has died from hunger";
         //Stomach Block
         public void StomachIncrease()
         {
-            attribChecker(stomach,stomachHi, stomachLo);
             this.stomach = stomach + 5;
         }
         public void StomachDecrease()
         {
-            attribChecker(stomach, stomachHi, stomachLo);
             this.stomach = stomach - 5;
+        }
+
+        // Feeding choice
+        public void FeedPet()
+        {
+            Console.WriteLine("What would you like to feed "+name+"?\n1. Birdseed"
+                                +"\n2. Raw Meat\n3. Big Mac");
+            string feedChoice = Console.ReadLine();
+            int a;
+            bool valid = int.TryParse(feedChoice, out a);
+            
+            switch (a)
+            {
+                case 1:
+                    Console.WriteLine("Ohh, birdseed, I love birdseed");
+                    StomachIncrease();
+                    break;
+
+                case 2:
+                    StomachIncrease();
+                    StomachIncrease();
+                    HitPointsIncrease();
+                    Console.WriteLine("MEAT! MEAT! MEAT!");
+                    break;
+
+                case 3:
+                    StomachIncrease();
+                    ManaDecrease();
+                    ActivityDecrease();
+                    HitPointsDecrease();
+                    Console.WriteLine("WTF is this?!?!  I Like it, but I feel like I might die later..."+bigMacCount);
+                    bigMacCount++;
+                    break;
+
+                default:
+                    Console.WriteLine("Pick a valid option");
+                    break;
+            }
         }
 
         // Hydration Block
@@ -77,6 +98,7 @@ namespace VirtualPet_Template
         public void HydrationDecrease()
         {
             this.hydration = hydration - 5;
+
         }
 
         // Behavior Block
@@ -92,7 +114,7 @@ namespace VirtualPet_Template
         // Punishment Block
         public void Punish()
         {
-            Console.WriteLine("Choose how to discipline your pet: \n\t1. Stern talking-to \n\t2. Spanking");
+            Console.WriteLine("Choose how to discipline your Gryphon: \n.1 Stern talking-to \n2. Spanking");
             string punishInput = Console.ReadLine();
             int a;
             bool valid = int.TryParse(punishInput, out a);
@@ -100,7 +122,8 @@ namespace VirtualPet_Template
             {
                 case 1:
                     BehaviorIncrease();
-                    ActivityDecrease(); 
+                    ActivityDecrease();
+                    Console.WriteLine("I learned my lesson");
                     break;
 
                 case 2:
@@ -108,6 +131,7 @@ namespace VirtualPet_Template
                     BehaviorIncrease();
                     HitPointsDecrease();
                     ManaDecrease();
+                    Console.WriteLine("Ouch, my butt hurts!!");
                     break;
 
                 default:
@@ -146,43 +170,107 @@ namespace VirtualPet_Template
         {
             this.mana = mana - 5;
         }
-        
+
         //****************** End of Attribute Modifying Methods *****************************
 
-        
+
+        public bool DeathCheck()
+        {
+            bool death = false;
+
+            if( bigMacCount == 3)
+            {
+                Console.WriteLine("Your Gryphon has passes due to heart disease, most likely \n"+
+                                   "caused by too much fast food");
+                death = true;
+            }
+            if (stomach == 0)
+            {
+                Console.WriteLine("Your Gryphon has died of hunger!!");
+                death = true;
+            }
+
+            if (hydration == 0)
+            {
+                Console.WriteLine("Your Gryphon has died of thurst!!");
+                death = true;
+            }
+
+            if (activity == 0)
+            {
+                Console.WriteLine("Your Gryphon has died from being too lazy!!");
+                death = true;
+            }
+
+            if (hitPoints == 0)
+            {
+                Console.WriteLine("Your Gryphon has been beaten to death!!");
+                death = true;
+            }
+
+            if (behavior == 0)
+            {
+                Console.WriteLine("Your Gryphon has been eaten for being a jerk!!");
+                death = true;
+            }
+
+            if (stomach == 100)
+            {
+                Console.WriteLine("Your Gryphon was stuffed to death!");
+                death = true;
+            }
+
+            if (hydration == 100)
+            {
+                Console.WriteLine("Your Gryphon has internally drowned!!");
+                death = true;
+            }
+
+            if (activity == 100)
+            {
+                Console.WriteLine("Your Gryphon's heart exploded!!");
+                death = true;
+            }
+
+            return death;
+        }
+
+
+        // Full check
+        public bool FullCheck()
+        {
+            bool full = false;
+            if (hitPoints == 100)
+            {
+                Console.WriteLine("Your pet has full health!!");
+                full = true;
+            }
+            if (behavior == 100)
+            {
+                Console.WriteLine("Your pet is well behaved");
+                full = true;
+            }
+
+            return full;
+        }
+
         // Status Meter Conversion
         public string StatusMeter(int a)
         {
             char[] level = { '_', '_', '_', '_', '_', '_', '_', '_', '_', '_' };
             int count = 0;
-            while (a > 0)
+            int b = 9;
+            while (b<a)
             {
                 level[count] = '+';
                 count++;
-                a = a - 10; 
+                b = b + 10; 
             }
             string reading = new string(level);
             return reading;
         }
+   
 
-        
-        // Amount Check
-        public void attribChecker(int a, string hi, string lo)
-        {
-            if (a >= 100)
-            {
-                Console.WriteLine(hi);
-                return;
-            }
-            if (a <= 0)
-            {
-                Console.WriteLine(lo);
-                return;
-            }
-         
-        }
-
- 
         // Method for stats of virtual pet
         public void MyPetStatus()
         {
