@@ -22,26 +22,26 @@ namespace VirtualPet_Template
               "         ))/   \\__,<  /_/" + "\n" +
               "         ((|  _/_/ `\\ \\_\\_" + "\n" +
               "           '\\____\\\\  )__\\_\\" + "\n");
+
             Console.Write("\n\nWould you like to name your Gryphon?(y/n): ");
             string nameQuest = Console.ReadLine().ToLower();
-
-            if (nameQuest == "y" || nameQuest=="yes")
-            {
-                myPet.PetName();
-            }
-            else if(nameQuest=="n" || nameQuest == "no")
-            {
+            myPet.PetName(nameQuest);
+            //if (nameQuest == "y" || nameQuest=="yes")
+            //{
+            //    myPet.PetName();
+            //}
+            //else if(nameQuest=="n" || nameQuest == "no")
+            //{
                 
-            }
-            else
-            {
-                Console.WriteLine("Invalid answwer, would you like to name your Gryphon (y/n)?: ");
-                nameQuest = Console.ReadLine().ToLower();
-                if (nameQuest == "y" || nameQuest == "yes")
-                {
-                    myPet.PetName();
-                }
-            }
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Invalid answwer, would you like to name your Gryphon (y/n)?: ");
+            //    nameQuest = Console.ReadLine().ToLower();
+                
+            //        myPet.PetName();
+                
+            //}
 
 
             // Main Menu
@@ -141,7 +141,7 @@ namespace VirtualPet_Template
                     
                     // Rename Pet
                     case 6:
-                        myPet.PetName();
+                        myPet.PetName("y");
                         break;
                     
                         

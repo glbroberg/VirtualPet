@@ -33,10 +33,24 @@ namespace VirtualPet_Template
 
 
         // Assigns Pet Name
-        public void PetName()
+        public void PetName(string nameAns)
         {
-            Console.Write("Please type your pet's name: ");
-            name = Console.ReadLine();
+            if (nameAns == "y" || nameAns == "yes")
+            {
+                Console.Write("Please type your pet's name: ");
+                name = Console.ReadLine();
+                return;
+            }
+            else if (nameAns == "n" || nameAns == "no")
+            {
+                return;
+            }
+            else
+            {
+                Console.WriteLine("Invalid answwer, would you like to name your Gryphon (y/n)?: ");
+                string nameRecheck = Console.ReadLine().ToLower();
+                PetName(nameRecheck);
+            }
         }
 
 
